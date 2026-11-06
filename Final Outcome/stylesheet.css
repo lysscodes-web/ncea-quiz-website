@@ -1,0 +1,423 @@
+body {
+  margin: 10px; /* Adds 10px invisable space outside border of entire page */
+  font-family: Verdana; /* Sets any text in the body to this font */
+  background: url('../images/WebsiteBackgroundcopy.jpg'); /* Sets my image as the background */
+  background-size: cover; /* Scales background image so it fills whole container leaving no gaps */
+  background-repeat: no-repeat; /* Stops background image from repeating */
+  background-position: center; /* Center the background */
+  background-attachment: fixed; /* Locks background to browser viewport meaning stays stationary while the text and other elements scroll over top it */
+}
+
+/* Heading 1: */
+h1 {
+	text-align: center; /* Center the text */
+	font-size: 1.7rem; /* Font Size */
+	font-family: verdana; /* Font style */
+	margin: 10px; /* Invisable Margin between page and text */
+	color: #D0E7E6; /* Text Color */
+	-webkit-text-stroke: 1px black; /* Black Border around text */
+	z-index: 1; /* Front to back layer order */
+}
+
+/* Paragraph: */
+p {
+	max-width: 65ch; /* Max characters across for the paragraph */
+	margin-inline: auto; /* Horizontally centers paragraph within the parent container */
+	font-size: 1.1rem; /* Font Size */
+	font-family: verdana; /* Font Style */
+	margin-top: 25px; /* Invisable Margin between paragraph and top of the page */
+}
+
+/* Carousel: */
+.carousel-container h2 {
+	position: absolute; /* Removes element of normal document flow and positions it relative anchor  */
+	top: 50%; /* Heading position within the y axis of the carousel parent container */
+	left: 50%; /* Heading position within the x axis of the carousel parent container */
+	transform: translate(-50%, -50%); /* pulls the heading back into the center */
+	margin: 0; /* Removes all the default invisable space around it an forces the text to sit perfect against the parent containers edges */
+	z-index: 10; /* Front to back layer order */
+	color: white; /* Text color */
+	-webkit-text-stroke: 2px black; /* Blacj border around text */
+	font-size: 3rem; /* Font Size */
+	text-align: center; /* Aligning the text in the center relative to the parent container not the web page */
+	width: 80%; /* Makes the heading box narrower so it takes up less space side-to-side */
+	font-family: verdana; /* Font style */ 
+}
+
+{
+	margin: 10px; /* Ensures every element starts within a 10px gap seperating from other elements */
+	padding: 0; /* Removes all default internal space inside elements */
+	font-family: verdana; /* Sets the global font style to verdana */
+	box-sizing: border-box; /* Forces an elements width and height to stay what I set them to  */
+}
+
+.carousel-item {
+  position: relative; /* Acts as an anchor to pin buttons or text on top of this */
+  width: 100%; /* Forces the slide to stretch and fill the exact width of the parent container */
+}
+
+.carousel-container {
+	position: relative; /* Parent Container acts as a boundary for the other stuff within the carousel */
+	display: inline-block; /* Shrinks box tightly around the content instead of stretching it */
+	text-align: center; /* Centers text inside the box */
+	top: 0; /* Resets the box starting point to the top left edge */
+	left: 0; /* Resets the box starting point to the top left edge */
+	width: 100%; /* Forces the box to completely fill the parent container */
+	height: 100%; /* Forces the box to completely fill the parent container */
+	z-index: 0; /* Keeps the box on the bottom of the layer of the screen */
+}
+
+.carousel-container img {
+	position: absolute; /* Frees image to stack on top of other images */
+	display: block; /* Removes default gap under image */
+	top: 0; /* Pins image perfectly to the top left corner */
+	left: 0; /* Pins image perfectly to the top left corner */
+	width: 100%; /* Stretches image to fill entire container space */
+	height: 100%; /* Stretches image to fill entire container space */
+	object-fit: cover; /* Prevets image from stretching or looking distorted */
+	z-index: 0; /* places image on the bottom background layer */
+}
+
+ul {
+  width: 850px; /* Width of image box */
+  height: 600px; /* Height of image box */
+  padding: 20px; /* Border between page and box */
+  display: flex; /* Turns child elements into flex items */
+  gap: 4vw; /* Gap between image in viewport width */
+  margin-left: auto; /* Pushes the element as far right as possible */
+  margin-right: auto; /* Pushes the element as far left as possible */
+  
+}
+
+li { /* List Item */
+  list-style-type: none; /* Removes the default bullet points */
+  background-color: white; /* Sets solid white background */
+  border: 1px solid gray; /* A thign gray fram around each item */
+  padding: 20px; /* Space between content and border */
+  flex: 0 0 100%; /* Forces each slide to be exacty 100% wide */
+  scroll-snap-align: center; /* Snaps the slide to the center when scrolling */
+  box-sizing: border-box; /* Padding inside the width so slides don't break */
+  
+  position: relative; /* Acts as a anchor for the items inside it */
+  overflow: hidden; /* Crops and content spilling outside the slide */
+}
+
+ul { /* Unordered list */
+  overflow-x: scroll; /* Forces a horizontal scroll bar to appear to scroll left and right through a slide and not overflow the screen. */
+  scroll-snap-type: x mandatory; /* Forces the container to auto snap to the nearest slide when you release the slide bar */
+}
+
+li { /* List Item */
+  scroll-snap-align: center; /* When scrolling on the carousel it will snap to the center to align */
+}
+
+ul::scroll-button(*) {
+  border: 0; /* Removes the border around the edge of the element */
+  font-size: 2rem; /* Font Size */
+  background: none; /* Sets no background color so it is see through */
+  color: #000; /* arrow buttons color to navigate carousel */
+  opacity: 0.7; /* arrow buttons opactity */
+  cursor: pointer; /* type of cursor when hovering arrow buttons */
+}
+
+ul::scroll-button(*):hover,
+ul::scroll-button(*):focus {
+  opacity: 1; /* arrow buttons opacity darken when hovered over */
+}
+
+ul::scroll-button(*):active {
+  translate: 1px 1px; /* how far arrow buttons move when held down */
+}
+
+ul::scroll-button(*):disabled {
+  opacity: 0.2; /* arrow buttons opactity when disabled */
+  cursor: unset; /* type of cursor when hovering arrow buttons turned off */
+}
+
+ul::scroll-button(left) {
+  content: "◄" / "Previous"; /* left arrow buttons set */
+}
+
+ul::scroll-button(right) {
+  content: "►" / "Next"; /* right arrow buttons set */
+}
+
+ul {
+  anchor-name: --my-carousel; /* anchor name set to reference pount so other elements can stick to it */
+}
+
+ul::scroll-button(*) {
+  position: absolute; /* Frees button to be placed anywhere on top of the carousel */
+  position-anchor: --my-carousel; /* Locking the movement to the anchor point */
+}
+
+ul::scroll-button(left) {
+  right: calc(anchor(left) - 70px); /* Where the button sits along the left of the page */
+  bottom: calc(anchor(top) + 13px); /* Where the button sits along the top of the page */
+}
+
+ul::scroll-button(right) {
+  left: calc(anchor(right) - 70px); /* Where the button sits along the right of the page */
+  bottom: calc(anchor(top) + 13px); /* Where the button sits along the top of the page */
+}
+
+ul {
+  scroll-marker-group: after; /* Creates navigation dots and puts them below the slide */
+}
+
+
+ul::scroll-marker-group {
+  position: absolute; /* Frees marker to be placed anywhere on top of the carousel */
+  position-anchor: --my-carousel; /* Sets the position on the anchor */
+  top: calc(anchor(bottom) - -10px); /* Where the marker (4 buttons) sits on the y-axis */
+  justify-self: anchor-center; /* Where the button sits anchored to the carousel */
+
+  display: flex; /* Puts the items side by side in a flexable row */
+  justify-content: center; /* Centers the row horizontally */
+  gap: 20px; /* Gap of 20px between each marker */
+}
+
+li::scroll-marker {
+  content: attr(data-accName); /* Takes hidden text label and puts inside the nav dot */
+  width: 16px; /* Width of marker */
+  height: 16px; /* Height of marker */
+  background-color: transparent; /* The markers are transparent unless page active */
+  border: 2px solid black; /* Thickness and Color of marker */
+  border-radius: 50%; /* curves the edges into a perfect circle */
+  overflow: hidden; /* Hides the item names links for inside the markers */
+  text-indent: 16px; /* Pushes the text inside the marker to the right so it wont be seen */
+}
+
+li::scroll-marker:target-current {
+  background-color: black; /* Background color of the marker black when active */
+}
+
+/* Resources/Equations */
+.Resources {
+	justify-content: flex-start; /* Align all items to beginning of main layout axis */
+	align-items: flexstart; /* Align all items to start at top/left */
+	gap: 20px; /* 20px gap between items in container */
+	margin: 20px 0; /* Creates empty space above and below element to seperate from other content */
+	max-width: 100%; /* Stops element from becoming wider that its container */
+}
+
+.resources-image {
+	width: 500px; /* Sets width of image to 500 pixels */
+	height: auto; /* Auto adjusts height to the width so image doesn't stretch */
+	border-radius: 10px; /* Rounds corners of image */
+}
+
+.main-layout {
+    display: flex; /* Aligns items inside main layout side by side in row by default */
+    justify-content: flex-start; /* Pushes all items to far left of row */
+    align-items: flex-start; /* Aligns items to top of container */
+    gap: 20px; /* Space between the quiz and the notepad */
+    margin: 20px 0; /* Adds 20px gap above and below container to seperate from different sections of page */
+    max-width: 100%; /* Ensures container doesnt grow wider than screen or parent element */
+    padding: 0 15px; /* Adds 15px gap of room inside container on left and right sides so content doesnt touch edges */
+}
+
+.drawing-container {
+	display: flex; /* Aligns items inside drawing contaienr side by side in row */
+    flex-direction: column; /* Turns container into vertical stack so the canvas and button */
+	align-items: flex-start; /* Aligns items to top of container */
+	gap: 12px; /* Space between the notepad and the clear button */
+	flex-shrink: 0; /* Forces element to stay its exact size and not change size */
+	margin-left: 10px; /* pushes element away from whatever is to its left by 10px */
+}
+
+.video {
+	max-width: 100%; /* Makes video shrink to fix smaller screen bettwer but stops it from getting wider that original size */
+    border: none; /* tells browser to remove border around element */
+    display: flex; /* Aligns items inside video container side by side in row */
+    justify-content: flex-start; /* Pushes all items in container to far left of row */
+    align-items: flex-start; /* Aligns items to top of container */
+    gap: 20px; /* Space between the video and the notepad */
+	border-radius: 10px; /* Rounds corners of video */
+    margin: 20px 0; /* Creates empty space above and below element to seperate from other content */
+    max-width: 100%; /* Ensures container doesnt grow wider than screen or parent element */
+}
+
+/* Notepad: */
+
+.clear-btn {
+    padding: 8px 16px; /* Adds 8px gap of space above and below button and 16px gap left and right */
+    background-color: white; /* Colour of button is white */
+    color: black; /* Text color */
+    border: none; /* Removes default border around button */
+    border-radius: 10px; /* Rounds corners of button */
+    font-size: 14px; /* Font size at 14px */
+    font-weight: bold; /* Sets the font as bold */
+    cursor: pointer; /* When hovering over the button the cursor changes to the pointer to indicate that it is possible to click */
+    transition: background-color 0.2s ease; /* Smooths the transition from colours when the user hovers the button */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow beneath the button */
+}
+
+.clear-btn:hover {
+    background-color: #d0f4f7; /* Darker color on hover */
+}
+
+#drawingCanvas {
+    border: 1px solid #ccc; /* thin grey outline around canvas to see edge */
+    background-color: #fff; /* Background color of drawing area to white */
+	border-radius: 10px; /* Drawing Canvas border curve */
+	width: 450px; /* Canvas to be set as this width */
+	height: auto; /* Height to auto adjust to the width so image doesn't stretch */
+	margin: 20px 0 0 0; /* 20px gap above canvas to push elements on top away */
+}
+
+/* Quiz: */
+
+.app{ /* quiz box */
+	flex: 1 0 300px; /* tells box to shrink or grow in a flexible layout and sets base size of 300px */
+	background: white; /* Stes background colour of box to white */
+	width: 90%; /* Makes box take up 90% of the screen on smaller screens so it doesn't touch edge of device */
+	max-width: 600px; /* Stops box from stretching to wide */
+	min-width: 320px; /* Stops box from shrinking to small */
+	margin: 20px 0 0 0; /* Adds 20px of space at top of the box to push down whatever may be above */
+	border-radius: 10px; /* Rounds the corners of the quiz */
+	padding: 30px; /* adds 30px gap inside box so elements such as buttons don't touch the edge */
+}
+
+.app h1{ /* Quiz: ____ */
+	font-size: 25px; /* Font size of title inside quiz */
+	color: black; /* Font colour */
+	font-weight: bold; /* Makes text bold */
+	border-bottom: 1px solid #333; /* Thin grey line below the title */
+	padding-bottom: 30px; /* Pushs text 30px away from bottom line */
+}
+
+.quiz{ /* Between the question and the h1 */
+	padding: 10px 0; /* adds 10px gap inside quiz above and below question and heading */
+}
+
+.quiz h2{ /* Question */
+	font-size: 18px; /* Font size of question */
+	color: #001e4d; /* Font colour */
+	font-weight: bold; /* Makes the text bold */
+	font-family: verdana; /* Sets the font */
+}
+
+.btn { /* Quiz Buttons (answers) */
+	color: black; /* Text inside black */
+	font-weight: 500; /* Makes the text just slightly bold */
+	width: 100%; /* Stretches button to fill width of container */
+	border: 1px solid black; /* Sets a 1px black border around the button */
+	padding: 10px; /* 10px of empty space inside button on all sides */
+	margin: 10px 0; /* Gap on top and bottom between buttons */
+	text-align: left; /* Text inside the button pulled to the left */
+	border-radius: 4px; /* Curve around buttons */
+	cursor: pointer; /* When hovering over the button it will change the cursor to a pointer */
+	transition: all 0.3s; /*  */
+}
+
+.btn:hover:not([disabled]){ /* Targets buttons on quiz and checks if not disabled */
+	background: black; /* When hovering over the answers background will change to black */
+	color: white; /* When hovering over the answers the colour of font will change to black */
+}
+
+.btn:disabled{ /* Targets disabled buttons on quiz to see if they are disabled */
+	cursor: no-drop; /* Changes the cursor to an inactive icon (red circle) */
+}
+
+/* quiz answers: */
+#next-btn{
+	background: #ADD8E6; /* Colour of button */
+	color: black; /* Text colour */
+	font-weight: 500; /* Almost bold text */
+	width: 150px; /* How wide the button is */
+	border: 0; /* Removes default border */
+	padding: 10px; /* Invisabke gap around all sides of button */
+	margin: 20px auto 0; /* Bottom and top height gap to 20px */
+	border-radius: 4px; /* Button curve */
+	cursor: pointer; /* Changes the cursor on hover */
+	display: none; /* Doesnt display the button but when applied to in javascript it will show again */
+}
+
+.correct{
+	background: #9aeabc; /* When answer is correct will go green */
+}
+.incorrect{
+	background: #ff9393; /* When answer is incorrect will go red */
+}
+
+/* This makes the buttons sit in a row across the top */
+.navbar {
+	position: relative; /* Acts as anchor for elements inside */
+	z-index: 2; /* Sets the navbar on the second layer */
+    display: flex; /*Turns the navbar into a flexable container  */
+	align-items: center; /* Align the items in the middle on the y axis of the nav bar */
+	height: 50px; /* how thick the nav bar is */
+    background-color: #D0E7E6; /* background color of navbar */
+    padding: 10px; /* invisable gap around all sides of button */
+	border: 2px solid black; /* Black border around the edge of navbar */
+	border-radius: 20px; /* Curve of edges of navbar */
+}
+
+.dropdown { 
+	position: relative; /* Acts as anchor for elements inside */
+	display: inline-block; /* Shrinks box tightly around content without stretching it */
+}
+
+.dropbtn { /* Main buttons on navbar */
+	display: flex; /* Turns the button into a flexable container */
+	align-items: center; /* Aligns everything inside the button vertically */
+	gap: 8px; /* 8px gap between elements inside the button */
+    background-color: #91C8E4; /* Fills the button with a blue colour */
+    color: Black; /* text color */
+	font-size: 16px; /* Font size */
+    padding: 14px 20px; /* 14px invisable gap at top and bottom then 20px for left and right */
+    border: 1px solid black; /* Sets a border around the button to 1px thick and black */
+	margin: 5px; /* 5px empty space outside button so it doesnt touch other elements on page */
+	border-radius: 10px; /* Curve of corners on button */
+    cursor: pointer; /* When hovering over button will change the cursor to pointer */
+}
+
+.btn-icon{
+	width: 20px; /* width of little icons on each button */
+	height: 20px; /* height of little icons on each button */
+	display: block; /* Sets the element into its own entire row */
+}
+
+button {
+  font-family: Verdana; /* Sets the font for the main buttons */
+}
+
+/* Hide menus by default */
+.dropdown-content {
+    display: none; /* hides the content of navbar */
+    position: absolute; /* allows the drop down content to sit on top of other elements in the way */
+    background-color: white;
+    min-width: 150px; /* Stops the buttons from being to small */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* black shadow around the dropdown content */
+	border-radius: 10px; /* Curve around corners */
+	
+}
+
+.dropdown-content a {
+  font-family: Verdana; /* Sets the drop down content font */
+}
+
+/* Centers the links to exams */
+.centered-link {
+    display: block; /* Sets element to its own entire row */
+    text-align: center; /* Centres the text in the button */
+    width: 100%;  /* Stretches link to fill container*/
+	background-color: #EAFCFF; /* Colour of background in dropdown boxes */
+	color: black; /* Text colour */           
+	display: inline-block; /* Shrinks box tightly around content without stretching it */  
+	border-radius: 6px; /* Rounded corners */
+	font-family: Verdana; /* Sets the font */
+	font-weight: normal; /* Keeps the font normal weight not bold */
+	transition: 0.3s; /* Smooth transition for the hover effect */
+}
+
+.centered-link:hover {
+  background-color: #d0f4f7; /* Darker on hover */
+  transform: scale(1.05); /* Slightly makes the button bigger */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adds a small shadow */
+}
+
+/* Show dropdown menu when hovering over the container */
+.dropdown:hover .dropdown-content { display: block; }
+
